@@ -1,5 +1,7 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {updateProp} from '../../ducks/reducer';
 
 class WizardThree extends Component {
     render(){
@@ -17,5 +19,12 @@ class WizardThree extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    const {propToBeUsedOn} = state;
+    return{
+        propToBeUsedOn
+    }
+}
 
-export default WizardThree; 
+export default connect( mapStateToProps, { updateProp } )( WizardThree );
+
